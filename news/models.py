@@ -22,6 +22,10 @@ class Article(models.Model):
     author = models.ForeignKey('auth.User', blank=True,null=True,verbose_name='作者',on_delete= models.CASCADE)
     content = models.TextField('内容',default='',blank=True)
 
+    pub_date = models.DateTimeField('发表时间',auto_now_add=True,editable=True)
+    update_time = models.DateTimeField('更新时间',auto_now=True,null=True)
+
+
     published = models.BooleanField('正式发布',default=True)
 
     def __str__(self):
