@@ -29,7 +29,7 @@ class Article(models.Model):
     published = models.BooleanField('正式发布',default=True)
 
     def __str__(self):
-        return self.title
+        return self.Title
 
     class Meta:
         verbose_name = '教程'
