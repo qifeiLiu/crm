@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from DjangoUeditor.models import UEditorField
 from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
 
@@ -20,7 +21,11 @@ class Article(models.Model):
     slug = models.CharField('网址',max_length=256,db_index=True)
 
     author = models.ForeignKey('auth.User', blank=True,null=True,verbose_name='作者',on_delete= models.CASCADE)
-    content = models.TextField('内容',default='',blank=True)
+    #content = models.TextField('内容',default='',blank=True)
+    # 仅修改 content 字段
+    content = UEditorField('内容', height=300, width=1000,
+                           default=u'', blank=True, imagePath="uploads/images/",
+                           toolbars='besttome', filePath='uploads/files/')
 
     pub_date = models.DateTimeField('发表时间',auto_now_add=True,editable=True)
     update_time = models.DateTimeField('更新时间',auto_now=True,null=True)
