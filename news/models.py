@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from DjangoUeditor.models import UEditorField
+from django.urls import  reverse
 from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
 
@@ -8,8 +9,13 @@ class Coloumn(models.Model):
     name = models.CharField("栏目名称",max_length=256)
     slug = models.CharField('栏目地址',max_length=256, db_index= True)
     intro = models.TextField('栏目简介',default='')
+
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('column', args=(self.slug,))
+
     class Meta:
         verbose_name = '栏目'
         verbose_name_plural='栏目'
@@ -35,6 +41,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.Title
+
+    def get_absolute_url(self):
+        return reverse('article', args=(self.slug,))
 
     class Meta:
         verbose_name = '教程'
