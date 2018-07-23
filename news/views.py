@@ -17,7 +17,8 @@ def index(request):
 
 def column_detail(request, column_slug):
     column = Coloumn.objects.get(slug=column_slug)
-    return render(request, 'news/column.html', {'column': column})
+    num = 1
+    return render(request, 'news/column.html',locals())
 
 
 def article_detail(request, article_slug):

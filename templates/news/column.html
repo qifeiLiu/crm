@@ -1,9 +1,11 @@
 {% extends "base.html" %}
- 
+{% load my_tag %}
+
 {% block title %}
-{{ column.title }}
+{{ column.title | default:222}}
 {% endblock title %}
- 
+
+
 
 {% block content %}
 <p>栏目名称：{{ column.name }}</p>
@@ -16,4 +18,15 @@
         </li>
     {% endfor %}
 </ul>
+    {% autoescape off %}
+     {{ "<h1>使浏览器能识别</h1>" }}
+    {% endautoescape %}
+
+    {% verbatim %}
+    {{ 禁止渲染 }}
+    {% endverbatim %}
+
+    {%  my_add100 4 %}
+    {{ num|my_add1:8 }}
+
 {% endblock content %}
