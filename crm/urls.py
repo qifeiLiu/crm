@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^ueditor/', include(DjangoUeditor_urls)),
     url(r'^$',views.index,name='index'),
     url(r'^column/(?P<column_slug>[^/]+)/$', views.column_detail, name='column'),
-    url(r'^news/(?P<article_slug>[^/]+)/$', views.article_detail,name='article'),
+    url(r'^news/(?P<pk>\d+)/(?P<article_slug>[^/]+)/$', views.article_detail,name='article'),
 ]
 
 if settings.DEBUG:
