@@ -7,8 +7,10 @@ from news.models import  Coloumn,Article
 # def index(request):
 #     return HttpResponse(u'欢迎学习django')
 def index(request):
-    columns = Coloumn.objects.all()
-    return render(request, 'index.html', {'columns': columns})
+    # columns = Coloumn.objects.all()
+    home_display_columns = Coloumn.objects.filter(home_display=True)
+    nav_display_columns = Coloumn.objects.filter(nav_display=True)
+    return render(request, 'index.html', locals())
 # def column_detail(request,column_slug):
 #     return HttpResponse('column_slug:'+column_slug)
 #
