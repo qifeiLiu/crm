@@ -2,7 +2,10 @@
  
 {% block Title %} 首页 {% endblock Title %}
  
- 
+{% block User %}
+  <h1>Hello,{{ username }}</h1>
+{% endblock User %}
+
 {% block content %}
 <ul>
     {% for column in  home_display_columns %}
